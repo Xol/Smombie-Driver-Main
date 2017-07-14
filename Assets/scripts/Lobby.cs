@@ -24,6 +24,7 @@ public class Lobby : MonoBehaviour {
 			},
 			changed: (string id, RoomDocumentType document, IDictionary changes, string[] deletions) => {
 				if (document.room_id == room_id) {
+					GameObject.Find("Main Camera").GetComponent<Camera>().backgroundColor = Color.green;
 					Debug.Log("App connected");
 				}
 			}
