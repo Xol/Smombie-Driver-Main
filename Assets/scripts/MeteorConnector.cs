@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Meteor : MonoBehaviour {
+public class MeteorConnector : MonoBehaviour {
 	
 	static string room_id;
 
