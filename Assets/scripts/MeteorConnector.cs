@@ -27,10 +27,10 @@ public class MeteorConnector : MonoBehaviour {
 		// Add some handlers
 		var room_observer = rooms.Find ().Observe (
 			added: (string id, RoomDocumentType document) => {
-				Debug.Log(string.Format("Document added: [_id={0}]", document._id));
+				//Debug.Log(string.Format("Document added: [_id={0}]", document._id));
 			},
 			changed: (string id, RoomDocumentType document, IDictionary changes, string[] deletions) => {
-				if (document.room_id == room_id) {
+				if (document.room_id == room_id && document.app_connected) {
 					GameObject.Find("Main Camera").GetComponent<Camera>().backgroundColor = Color.green;
 					Debug.Log("App connected");
 				}
@@ -39,7 +39,7 @@ public class MeteorConnector : MonoBehaviour {
 
 		var points_observer = points.Find ().Observe (
 			added: (string id, PointDocumentType document) => {
-				Debug.Log(string.Format("Document added: [_id={0}]", document._id));
+				//Debug.Log(string.Format("Document added: [_id={0}]", document._id));
 			},
 			changed: (string id, PointDocumentType document, IDictionary changes, string[] deletions) => {
 				if (document.room_id == room_id) {
