@@ -23,17 +23,17 @@ public class CreateStreet : MonoBehaviour
 
         for (int i = 0; i < NumberOfVisibleStreetsSections; i++)
         {
-            placeNewSection(i);
+            PlaceNewSection(i);
         }
     }
 
-    void placeNewSection(int i)
+    void PlaceNewSection(int positionInArray)
     {
         // Create section
         int j = Random.Range(0, streetPrefabs.Length);
 
         GameObject section = (GameObject)Instantiate(streetPrefabs[j]);
-        streetSections[i] = section;
+        streetSections[positionInArray] = section;
 
         // Place section
         position.z += section.GetComponent<MeshCollider>().bounds.size.z / 2;
@@ -47,18 +47,14 @@ public class CreateStreet : MonoBehaviour
         // Player is behind second street section
         if (Input.GetKeyUp(KeyCode.Return))
         {
-            Debug.Log("Delete Street Section");
-
             Destroy(streetSections[oldestCreatedSection]);
-            placeNewSection(oldestCreatedSection);
+            PlaceNewSection(oldestCreatedSection);
 
             oldestCreatedSection++;
             if (oldestCreatedSection == streetSections.Length)
             {
                 oldestCreatedSection = 0;
             }
-
-            Debug.Log("Create Street Section");
         }
 	}
 }
