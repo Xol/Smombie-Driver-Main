@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Lobby : MonoBehaviour {
+	
+	static string room_id;
 
 	void Start() {
 		StartCoroutine (MeteorExample ());
@@ -21,7 +23,9 @@ public class Lobby : MonoBehaviour {
 				Debug.Log(string.Format("Document added: [_id={0}]", document._id));
 			},
 			changed: (string id, RoomDocumentType document, IDictionary changes, string[] deletions) => {
-				Debug.Log(string.Format("Document changed: [_id={0}]", document._id));
+				if (document.room_id == room_id) {
+					Debug.Log("App connected");
+				}
 			}
 		);
 
@@ -36,7 +40,8 @@ public class Lobby : MonoBehaviour {
 		var methodCall = Meteor.Method<string>.Call ("createRoom");
 		// Execute the method. This will yield until all the database side effects have synced.
 		yield return (Coroutine)methodCall;
-		Debug.Log (methodCall.Response);
+		room_id = methodCall.Response;
+		Debug.Log ("Room " + room_id + " created.");
 
 		// Get the value returned by the method.
 		// Debug.Log (string.Format ("Method response:\n{0}", methodCall.Response));
