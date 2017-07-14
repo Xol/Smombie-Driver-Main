@@ -39,7 +39,9 @@ public class MeteorConnector : MonoBehaviour {
 
 		var points_observer = points.Find ().Observe (
 			added: (string id, PointDocumentType document) => {
-				//Debug.Log(string.Format("Document added: [_id={0}]", document._id));
+				if (document.room_id == room_id) {
+					Debug.Log("Points: " + document.points);
+				}
 			},
 			changed: (string id, PointDocumentType document, IDictionary changes, string[] deletions) => {
 				if (document.room_id == room_id) {
