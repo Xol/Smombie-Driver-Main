@@ -42,6 +42,7 @@ public class Lobby : MonoBehaviour {
 		yield return (Coroutine)methodCall;
 		room_id = methodCall.Response;
 		Debug.Log ("Room " + room_id + " created.");
+		GameObject.Find ("RoomKey").GetComponent<TextMesh> ().text = room_id;
 
 		// Get the value returned by the method.
 		// Debug.Log (string.Format ("Method response:\n{0}", methodCall.Response));
