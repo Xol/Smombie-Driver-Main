@@ -6,12 +6,16 @@ public class Lobby : MonoBehaviour {
 	
 	static string room_id;
 
+	void Awake() {
+		DontDestroyOnLoad(transform.gameObject);
+	}
+
 	void Start() {
-		StartCoroutine (MeteorExample ());
+		StartCoroutine (MeteorLobby ());
 	}
 		
 
-	IEnumerator MeteorExample() {
+	IEnumerator MeteorLobby() {
 			yield return Meteor.Connection.Connect ("ws://localhost:3000/websocket");
 
 		// Create a collection
