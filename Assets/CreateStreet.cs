@@ -7,7 +7,7 @@ public class CreateStreet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        street = Resources.Load("Prefabs/Prefab_Street");
+        street = Resources.Load("Prefabs/Prefab_Street1");
         Instantiate(street);
     }
 	
