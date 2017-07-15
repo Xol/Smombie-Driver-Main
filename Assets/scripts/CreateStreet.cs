@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,6 +34,10 @@ public class CreateStreet : MonoBehaviour
 
         int sectionIndex = (oldestSection + 2) % streetSections.Length;
         distanceThreshold = streetSections[sectionIndex].transform.position.z;
+
+        // Reading JSON
+        TextAsset data = Resources.Load<TextAsset>("StreetData");        
+        SectionPrefab test = JsonUtility.FromJson<SectionPrefab>(data.text);
     }
 
     void PlaceNewSection(int i)
@@ -40,8 +45,8 @@ public class CreateStreet : MonoBehaviour
         // Create section
         int sectionIndex = Random.Range(0, streetPrefabs.Length);
 
-        //GameObject section = (GameObject)Instantiate(streetPrefabs[sectionIndex]);
-        GameObject section = (GameObject)Instantiate(streetPrefabs[2]);
+        GameObject section = (GameObject)Instantiate(streetPrefabs[sectionIndex]);
+        //GameObject section = (GameObject)Instantiate(streetPrefabs[2]);
         streetSections[i] = section;
 
         // Place section
@@ -68,4 +73,17 @@ public class CreateStreet : MonoBehaviour
             distanceThreshold = streetSections[sectionIndex].transform.position.z;
         }
     }
+}
+
+public class SectionPrefab
+{
+    public int EnvironmentID;
+    public SectionObject[] SectionObjects;
+}
+
+public class SectionObject
+{
+    public int ID;
+    public Vector3 Position;
+    public MovementBehaviourEnum MovementBehaviour;
 }

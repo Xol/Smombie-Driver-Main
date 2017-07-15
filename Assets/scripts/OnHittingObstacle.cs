@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OnHittingObstacle : MonoBehaviour
 {
+    [SerializeField]
+    private int deductedPoints = 1;
 
 	// Use this for initialization
 	void Start ()
