@@ -3,34 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeteorConnector : MonoBehaviour {
+
+	const string SERVER_IP = "ws://localhost:3000/websocket";
 	
 	static string room_id;
+
+	Meteor.Collection<RoomDocumentType> rooms;
+	Meteor.Collection<PointDocumentType> points;
+	Meteor.Collection<NotificationstDocumentType> notifications;
 
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
 	}
 
 	void Start() {
-		StartCoroutine (MeteorCoroutine ());
+		StartCoroutine (initialize ());
+		StartCoroutine (createRoom ());
 	}
-		
 
-	IEnumerator MeteorCoroutine() {
-		// connect to meteor
-		yield return Meteor.Connection.Connect ("ws://localhost:3000/websocket");
-
-		// Create a collections
-		var rooms = new Meteor.Collection<RoomDocumentType> ("rooms");
-		var points = new Meteor.Collection<PointDocumentType> ("points");
-		var notifications = new Meteor.Collection<NotificationstDocumentType> ("notifications");
-
+	public IEnumerator NotifyMeteor(string notification_type) {
 		// Create a room when game starts
-		var methodCall = Meteor.Method<string>.Call ("createRoom");
+		var methodCall = Meteor.Method<string>.Call ("notify", room_id, notification_type);
 		yield return (Coroutine)methodCall;
-		room_id = methodCall.Response;
-		Debug.Log ("Room " + room_id + " created.");
-		GameObject.Find ("RoomKey").GetComponent<TextMesh> ().text = room_id;
+	}
 
+	private void initializeObservers() {
 		// Room to syncronize app and desktop
 		var room_observer = rooms.Find ().Observe (
 			added: (string id, RoomDocumentType document) => {
@@ -38,8 +35,8 @@ public class MeteorConnector : MonoBehaviour {
 			},
 			changed: (string id, RoomDocumentType document, IDictionary changes, string[] deletions) => {
 				if (document.room_id == room_id && document.app_connected) {
-					GameObject.Find("Main Camera").GetComponent<Camera>().backgroundColor = Color.green;
-					Debug.Log("App connected");
+					GameObject.Find ("Main Camera").GetComponent<Camera> ().backgroundColor = Color.green;
+					Debug.Log ("App connected");
 				}
 			}
 		);
@@ -47,12 +44,12 @@ public class MeteorConnector : MonoBehaviour {
 		var points_observer = points.Find ().Observe (
 			added: (string id, PointDocumentType document) => {
 				if (document.room_id == room_id) {
-					Debug.Log("Points: " + document.points);
+					Debug.Log ("Points: " + document.points);
 				}
 			},
 			changed: (string id, PointDocumentType document, IDictionary changes, string[] deletions) => {
 				if (document.room_id == room_id) {
-					Debug.Log("Points: " + document.points);
+					Debug.Log ("Points: " + document.points);
 				}
 			}
 		);
@@ -60,12 +57,32 @@ public class MeteorConnector : MonoBehaviour {
 		var notifications_observer = notifications.Find ().Observe (
 			added: (string id, NotificationstDocumentType document) => {
 				if (document.room_id == room_id) {
-					Debug.Log("New notification: " + document.notification_type);
+					Debug.Log ("New notification: " + document.notification_type);
 				}
 			}
 		);
 	}
 
+	private IEnumerator initialize() {
+		// connect to meteor
+		yield return Meteor.Connection.Connect (SERVER_IP);
+
+		// Create a collections
+		rooms = new Meteor.Collection<RoomDocumentType> ("rooms");
+		points = new Meteor.Collection<PointDocumentType> ("points");
+		notifications = new Meteor.Collection<NotificationstDocumentType> ("notifications");
+
+		initializeObservers ();
+	}
+
+	private IEnumerator createRoom() {
+		// Create a room when game starts
+		var methodCall = Meteor.Method<string>.Call ("createRoom");
+		yield return (Coroutine)methodCall;
+		room_id = methodCall.Response;
+		Debug.Log ("Room " + room_id + " created.");
+		GameObject.Find ("RoomKey").GetComponent<TextMesh> ().text = room_id;
+	}
 }
 
 public class RoomDocumentType : Meteor.MongoDocument {
