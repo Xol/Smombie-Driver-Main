@@ -20,7 +20,6 @@ public class Justify : MonoBehaviour {
         // is the car is the right way up
 		if (transform.rotation.eulerAngles.y < 5f && transform.rotation.eulerAngles.y > -5f)
         {
-			Debug.Log ("OK");
             m_LastOkTime = Time.time;
         }
 
