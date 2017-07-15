@@ -17,13 +17,8 @@ public class OnHittingObstacle : MonoBehaviour
 
     }
 
-    void OnCollisionEnter (Collision collision)
+    void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Collision detected");
-    }
-
-    void OnCollisionEnter2D (Collision2D collision)
-    {
-        Debug.Log("Collision2D detected");
+        Debug.Log("Trigger detected");
     }
 }

@@ -5,11 +5,18 @@ using UnityEngine;
 public class MovingObstacle : MonoBehaviour
 {
     private MovementStrategy ms;
+    private GameObject player;
 
     [SerializeField]
-    private float speed = 1;
+    private float movementUpdateDistance = 15;
+    [SerializeField]
+    private float velocity = 1;
+
+    [Header("Accelerting and Feinting Obstacle")]
     [SerializeField]
     private float acceleration = 1;
+    [SerializeField]
+    private float movementTriggerDistance = 5;
 
     // Use this for initialization
     void Start ()
@@ -20,25 +27,27 @@ public class MovingObstacle : MonoBehaviour
                 ms = new StationaryStrategy(transform);
                 break;
             case "Obstacle - Linear":
-                ms = new LinearStrategy(transform, speed);
+                ms = new LinearStrategy(transform, velocity);
                 break;
             case "Obstacle - Accelerate":
-                ms = new AccelerateStrategy(transform, acceleration);
+                ms = new AccelerateStrategy(transform, velocity, acceleration, movementTriggerDistance);
                 break;
             case "Obstacle - Feint":
-                ms = new FeintStrategy(transform);
+                ms = new FeintStrategy(transform, velocity, acceleration, movementTriggerDistance);
                 break;
             default:
                 ms = new StationaryStrategy(transform);
                 break;
         }
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
         // Player is close enough
-        if (true)
+        if ((player.transform.position - transform.position).magnitude < movementUpdateDistance)
         {
             ms.MoveUpdate(Time.deltaTime);
         }
@@ -58,6 +67,8 @@ public class MovementStrategy
     protected Vector3 direction;
     protected Transform transform;
 
+    protected bool updateMovement;
+
     public MovementStrategy (Transform tf)
     {
         transform = tf;
@@ -68,6 +79,8 @@ public class MovementStrategy
 
         direction = endPosition - startPosition;
         direction.Normalize();
+
+        updateMovement = true;
     }
 
     public virtual void MoveUpdate (float deltaTime)
@@ -102,14 +115,18 @@ public class LinearStrategy : MovementStrategy
 
     public override void MoveUpdate(float deltaTime)
     {
-        if ((direction.x < 0 && transform.position.x > endPosition.x) ||
-            (direction.x > 0 && transform.position.x < endPosition.x))
+        if (updateMovement)
         {
-            transform.position += direction * velocity * deltaTime;
-        }
-        else
-        {
-            transform.position = endPosition;
+            if ((direction.x < 0 && transform.position.x > endPosition.x) ||
+                (direction.x > 0 && transform.position.x < endPosition.x))
+            {
+                transform.position += direction * velocity * deltaTime;
+            }
+            else
+            {
+                transform.position = endPosition;
+                updateMovement = false;
+            }
         }
     }
 }
@@ -118,39 +135,94 @@ public class AccelerateStrategy : MovementStrategy
 {
     protected float acceleration;
     protected float velocity;
+    protected float distance;
 
-    public AccelerateStrategy(Transform transform, float a)
+    protected GameObject player;
+
+    public AccelerateStrategy(Transform transform, float v, float a, float d)
         : base(transform)
     {
+        velocity = v;
         acceleration = a;
-        velocity = 0;
+        distance = d;
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public override void MoveUpdate(float deltaTime)
     {
-        if ((direction.x < 0 && transform.position.x > endPosition.x) ||
-            (direction.x > 0 && transform.position.x < endPosition.x))
+        if (updateMovement)
         {
-            velocity += acceleration * deltaTime;
-            transform.position += direction * velocity * deltaTime;
-        }
-        else
-        {
-            transform.position = endPosition;
+            bool moveLeft = direction.x < 0 && transform.position.x > endPosition.x;
+            bool moveRight = direction.x > 0 && transform.position.x < endPosition.x;
+
+            if (moveLeft || moveRight)
+            {
+                if ((player.transform.position - transform.position).magnitude < distance)
+                {
+                    transform.position += direction * velocity * deltaTime * acceleration;
+                }
+                else
+                {
+                    transform.position += direction * velocity * deltaTime;
+                }
+            }
+            else
+            {
+                transform.position = endPosition;
+                updateMovement = false;
+            }
         }
     }
 }
 
 public class FeintStrategy : MovementStrategy
 {
-    public FeintStrategy(Transform transform)
+    protected float acceleration;
+    protected float velocity;
+    protected float distance;
+
+    protected GameObject player;
+
+    protected bool changedDirection;
+
+    public FeintStrategy(Transform transform, float v, float a, float d)
         : base(transform)
     {
+        velocity = v;
+        acceleration = a;
+        distance = d;
 
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        changedDirection = false;
     }
 
     public override void MoveUpdate(float deltaTime)
     {
-        // Do Nothing
+        if (updateMovement)
+        {
+            bool moveLeft = direction.x < 0 && transform.position.x > endPosition.x;
+            bool moveRight = direction.x > 0 && transform.position.x < endPosition.x;
+
+            if (moveLeft || moveRight)
+            {
+                if (!changedDirection && (player.transform.position - transform.position).magnitude < distance)
+                {
+                    changedDirection = true;
+
+                    velocity *= acceleration;
+                    endPosition = startPosition;
+                    direction *= -1;
+                }
+
+                transform.position += direction * velocity * deltaTime;
+            }
+            else
+            {
+                transform.position = endPosition;
+                updateMovement = false;
+            }
+        }
     }
 }
