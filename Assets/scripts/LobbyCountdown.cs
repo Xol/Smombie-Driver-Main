@@ -23,7 +23,7 @@ public class LobbyCountdown : MonoBehaviour {
 			timeLeft -= Time.deltaTime;
 			text.text = Mathf.Round(timeLeft) + "";
 			if(timeLeft < 0) { 
-				GameObject.Find ("__Meteor").GetComponent<MeteorConnector> ().NotifyMeteor (NotificationTypeEnum.GAME_START);
+				StartCoroutine(GameObject.Find ("__Meteor").GetComponent<MeteorConnector> ().NotifyMeteor (NotificationTypeEnum.GAME_START));
 				SceneManager.LoadScene("smombie-driver");
 			}
 		}

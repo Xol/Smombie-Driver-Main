@@ -28,7 +28,8 @@ public class MeteorConnector : MonoBehaviour {
 	 * Send notifications to meteor server 
 	 **/
 	public IEnumerator NotifyMeteor(NotificationTypeEnum notification_type) {
-		var methodCall = Meteor.Method<string>.Call ("notify", room_id, notification_type);
+		Debug.Log (room_id + ", " + notification_type);
+		var methodCall = Meteor.Method<string>.Call ("notify", room_id, notification_type, false);
 		yield return (Coroutine)methodCall;
 	}
 
@@ -50,7 +51,7 @@ public class MeteorConnector : MonoBehaviour {
 				if (document.room_id == room_id && document.app_connected) {
 					GameObject.Find ("Main Camera").GetComponent<Camera> ().backgroundColor = Color.green;
 					Debug.Log ("App connected");
-					//GameObject.Find("Countdown").GetComponent<LobbyCountdown>().activateCountdown();
+					GameObject.Find("Countdown").GetComponent<LobbyCountdown>().activateCountdown();
 
 				}
 			}
@@ -127,4 +128,5 @@ public class PointDocumentType : Meteor.MongoDocument {
 public class NotificationstDocumentType : Meteor.MongoDocument {
 	public string room_id;
 	public string notification_type;
+	public bool solved;
 }
