@@ -20,7 +20,7 @@ public class CreateStreet : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        streetPrefabs = Resources.LoadAll("Prefabs");
+        streetPrefabs = Resources.LoadAll("StreetPrefabs");
         streetSections = new GameObject[NumberOfVisibleStreetsSections];
 
         for (int i = 0; i < NumberOfVisibleStreetsSections; i++)
