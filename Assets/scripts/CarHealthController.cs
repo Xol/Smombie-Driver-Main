@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarHealthController : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class CarHealthController : MonoBehaviour {
 		GameObject.Find ("health").GetComponent<TextMesh> ().text = health + "";
 		if (health == 0) {
 			StartCoroutine(GameObject.Find("__Meteor").GetComponent<MeteorConnector>().NotifyMeteor(NotificationTypeEnum.GAME_OVER));
+			SceneManager.LoadScene("GameOver");
 		}
 	}
 }
