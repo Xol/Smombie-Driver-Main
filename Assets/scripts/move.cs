@@ -2,34 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class move : MonoBehaviour
+public class Move : MonoBehaviour
 {
     [SerializeField]
     private float velocity = 1;
-
+    private CharacterController player;
     private Vector3 moveForward = new Vector3(0, 0, 10);
     // Use this for initialization
     void Start()
     {
-
+        player = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Constant Movement
-        GetComponent<CharacterController>().Move(transform.forward.normalized * Time.deltaTime * velocity);
+        player.Move(transform.forward.normalized * Time.deltaTime * velocity);
+        
+
 
         // Boost
         if (Input.GetKey(KeyCode.W))
         {
-            GetComponent<CharacterController>().Move(transform.forward.normalized * Time.deltaTime * velocity);
+            player.Move(transform.forward.normalized * Time.deltaTime * velocity);
         }
 
         // Break
         if (Input.GetKey(KeyCode.S))
         {
-            GetComponent<CharacterController>().Move(transform.forward.normalized * Time.deltaTime * -1 / 2 * velocity);
+            player.Move(transform.forward.normalized * Time.deltaTime * -1 / 2 * velocity);
         }
 
         int angle = (int)transform.rotation.eulerAngles.y;
