@@ -480,6 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3037a34f887ae284b877673c98fce369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NumberOfVisibleStreetsSections: 5
 --- !u!4 &2050965823
 Transform:
   m_ObjectHideFlags: 0
