@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /**
  * Class that handles connection and communication to meteor backend and app
@@ -9,7 +10,7 @@ public class MeteorConnector : MonoBehaviour {
 
 	const string SERVER_IP = "ws://localhost:3000/websocket";
 	
-	static string room_id;
+	public static string room_id;
 
 	Meteor.Collection<RoomDocumentType> rooms;
 	Meteor.Collection<PointDocumentType> points;
@@ -21,7 +22,8 @@ public class MeteorConnector : MonoBehaviour {
 
 	void Start() {
 		StartCoroutine (initialize ());
-		StartCoroutine (createRoom ());
+		SceneManager.LoadScene("Lobby"); 
+		StartCoroutine (CreateRoom ());
 	}
 
 	/**
@@ -98,7 +100,6 @@ public class MeteorConnector : MonoBehaviour {
 	private IEnumerator initialize() {
 		// connect to meteor
 		yield return Meteor.Connection.Connect (SERVER_IP);
-
 		// Create a collections
 		rooms = new Meteor.Collection<RoomDocumentType> ("rooms");
 		points = new Meteor.Collection<PointDocumentType> ("points");
@@ -110,7 +111,7 @@ public class MeteorConnector : MonoBehaviour {
 	/**
 	 * Create room to syncronize app and desktop
 	 **/
-	private IEnumerator createRoom() {
+	public IEnumerator CreateRoom() {
 		// Create a room when game starts
 		var methodCall = Meteor.Method<string>.Call ("createRoom");
 		yield return (Coroutine)methodCall;
