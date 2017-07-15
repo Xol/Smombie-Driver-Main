@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a13c362c6b10444a9853cedd8476d03f
+timeCreated: 1500128428
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Neuropolitical
+  fontNames:
+  - Neuropolitical
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

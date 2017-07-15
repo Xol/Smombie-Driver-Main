@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 45de7ddda38d34dab9853ad96e4291ad
+timeCreated: 1500128328
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DODGE
+  fontNames:
+  - DODGE
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
