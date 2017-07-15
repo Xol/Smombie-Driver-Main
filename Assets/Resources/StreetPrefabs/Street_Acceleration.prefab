@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 64309355014097552}
   - component: {fileID: 23018888292545792}
   - component: {fileID: 114949596331386514}
+  - component: {fileID: 114315581188462588}
   m_Layer: 0
   m_Name: PlaneLeft
   m_TagString: Obstacle - Accelerate
@@ -60,6 +61,7 @@ GameObject:
   - component: {fileID: 64538974190198220}
   - component: {fileID: 23310937011870320}
   - component: {fileID: 114600834384904404}
+  - component: {fileID: 114696585524046618}
   m_Layer: 0
   m_Name: PlaneRight
   m_TagString: Obstacle - Accelerate
@@ -267,6 +269,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114315581188462588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417265521689440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: m
 --- !u!114 &114600834384904404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,6 +296,18 @@ MonoBehaviour:
   velocity: 1
   acceleration: 5
   movementTriggerDistance: 5
+--- !u!114 &114696585524046618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1779651739111506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w
 --- !u!114 &114949596331386514
 MonoBehaviour:
   m_ObjectHideFlags: 1

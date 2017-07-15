@@ -4,29 +4,25 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour {
     [SerializeField] private string gender;
-    private static AudioSource[] maleAudio = Resources.LoadAll("Assets/Resources/Sound/Scream/Male") as AudioSource[];
-    private static AudioSource[] femaleAudio = Resources.LoadAll("Assets/Resources/Sound/Scream/Female") as AudioSource[];
 
-    public void ChooseSound()
+    private GameObject audioManager;
+
+    void Start()
     {
-        if (this.gender == "male")
-        {
-            Debug.Log("Play male sound");
-            PlaySound(maleAudio[0]);
-        }
-
-        if (this.gender == "female")
-        {
-            Debug.Log("Play female sound");
-            PlaySound(femaleAudio[0]);
-        }
+        audioManager = GameObject.Find("AudioManager");
+            
     }
 
-    public void PlaySound(AudioSource sound)
+    public void PlaySound()
     {
-        if(sound != null) {
-            AudioSource audio = sound;
-            audio.Play();
+        if (this.gender.Equals("m"))
+        {
+            audioManager.GetComponent<AudioManager>().PlayMaleAudio();
         }
+        if (this.gender.Equals("w"))
+        {
+            audioManager.GetComponent<AudioManager>().PlayFemaleAudio();
+        }
+
     }
 }
