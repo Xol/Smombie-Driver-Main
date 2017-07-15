@@ -8,6 +8,8 @@ public class MovingObstacle : MonoBehaviour
     private Vector3 endPosition;
 
     [SerializeField]
+    private bool backAndForward = false;
+    [SerializeField]
     private float speed = 1;
     private Vector3 direction;
 
@@ -37,6 +39,12 @@ public class MovingObstacle : MonoBehaviour
             else
             {
                 this.transform.position = endPosition;
+
+                if (backAndForward)
+                {
+                    endPosition.x *= -1;
+                    direction *= -1;
+                }
             }
         }
     }

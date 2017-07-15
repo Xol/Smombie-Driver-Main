@@ -30,9 +30,10 @@ public class CreateStreet : MonoBehaviour
     void PlaceNewSection(int positionInArray)
     {
         // Create section
-        int j = Random.Range(0, streetPrefabs.Length);
+        int sectionIndex = Random.Range(0, streetPrefabs.Length);
 
-        GameObject section = (GameObject)Instantiate(streetPrefabs[j]);
+        //GameObject section = (GameObject)Instantiate(streetPrefabs[sectionIndex]);
+        GameObject section = (GameObject)Instantiate(streetPrefabs[2]);
         streetSections[positionInArray] = section;
 
         // Place section
