@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 64997184004751998}
   - component: {fileID: 23030053431238822}
   - component: {fileID: 114270054710671660}
+  - component: {fileID: 114249498046986086}
   m_Layer: 0
   m_Name: Squirrel
   m_TagString: Obstacle - Accelerate
@@ -61,6 +62,7 @@ GameObject:
   - component: {fileID: 64868471473648120}
   - component: {fileID: 23315652895097900}
   - component: {fileID: 114267562059707172}
+  - component: {fileID: 114887467687841770}
   m_Layer: 0
   m_Name: Biker
   m_TagString: Obstacle - Linear
@@ -285,6 +287,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114249498046986086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1618276139569612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w
 --- !u!114 &114267562059707172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,3 +329,15 @@ MonoBehaviour:
   velocity: 1
   acceleration: 10
   movementTriggerDistance: 5
+--- !u!114 &114887467687841770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1635353296386770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: m
