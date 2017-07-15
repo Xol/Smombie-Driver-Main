@@ -50,16 +50,12 @@ public class MeteorConnector : MonoBehaviour {
 			}
 		);
 
-		// Create a method call that returns a string
+		// Create a room when game starts
 		var methodCall = Meteor.Method<string>.Call ("createRoom");
-
-		// Execute the method. This will yield until all the database side effects have synced.
 		yield return (Coroutine)methodCall;
-
 		room_id = methodCall.Response;
 		Debug.Log ("Room " + room_id + " created.");
 		GameObject.Find ("RoomKey").GetComponent<TextMesh> ().text = room_id;
-
 	}
 
 }
