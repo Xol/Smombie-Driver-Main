@@ -32,6 +32,11 @@ public class MeteorConnector : MonoBehaviour {
 		yield return (Coroutine)methodCall;
 	}
 
+	public IEnumerator ModifyPoints(int amount) {
+		var methodCall = Meteor.Method<string>.Call ("setPoints", room_id, amount);
+		yield return (Coroutine)methodCall;
+	}
+
 	/**
 	 * Initialize observers for meteor collections
 	 **/
@@ -45,7 +50,7 @@ public class MeteorConnector : MonoBehaviour {
 				if (document.room_id == room_id && document.app_connected) {
 					GameObject.Find ("Main Camera").GetComponent<Camera> ().backgroundColor = Color.green;
 					Debug.Log ("App connected");
-					GameObject.Find("Countdown").GetComponent<LobbyCountdown>().activateCountdown();
+					//GameObject.Find("Countdown").GetComponent<LobbyCountdown>().activateCountdown();
 
 				}
 			}
@@ -54,13 +59,20 @@ public class MeteorConnector : MonoBehaviour {
 		var points_observer = points.Find ().Observe (
 			added: (string id, PointDocumentType document) => {
 				if (document.room_id == room_id) {
+					GameObject gameUI = GameObject.Find("GameUI");
+					if (gameUI) {
+						gameUI.GetComponent<UIController>().setPoints(document.points + "");
+					}
 					Debug.Log ("Points: " + document.points);
 				}
 			},
 			changed: (string id, PointDocumentType document, IDictionary changes, string[] deletions) => {
 				if (document.room_id == room_id) {
+					GameObject gameUI = GameObject.Find("GameUI");
+					if (gameUI) {
+						gameUI.GetComponent<UIController>().setPoints(document.points + "");
+					}
 					Debug.Log ("Points: " + document.points);
-
 				}
 			}
 		);
