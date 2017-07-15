@@ -22,7 +22,6 @@ public class MeteorConnector : MonoBehaviour {
 	void Start() {
 		StartCoroutine (initialize ());
 		StartCoroutine (createRoom ());
-		StartCoroutine (sendSMS ());
 	}
 
 	/**
@@ -30,7 +29,7 @@ public class MeteorConnector : MonoBehaviour {
 	 **/
 	public IEnumerator NotifyMeteor(NotificationTypeEnum notification_type) {
 		Debug.Log (room_id + ", " + notification_type);
-		var methodCall = Meteor.Method<string>.Call ("notify", room_id, notification_type);
+		var methodCall = Meteor.Method<string>.Call ("notify", room_id, notification_type, false);
 		yield return (Coroutine)methodCall;
 	}
 
@@ -114,14 +113,6 @@ public class MeteorConnector : MonoBehaviour {
 		Debug.Log ("Room " + room_id + " created.");
 		GameObject.Find ("RoomKey").GetComponent<TextMesh> ().text = room_id;
 	}
-
-	private IEnumerator sendSMS() {
-		for (;;) {
-			yield return new WaitForSeconds (14);
-			StartCoroutine(NotifyMeteor (NotificationTypeEnum.NEW_MESSAGE));
-		}
-
-	}
 }
 
 public class RoomDocumentType : Meteor.MongoDocument {
@@ -137,4 +128,5 @@ public class PointDocumentType : Meteor.MongoDocument {
 public class NotificationstDocumentType : Meteor.MongoDocument {
 	public string room_id;
 	public string notification_type;
+	public bool solved;
 }
