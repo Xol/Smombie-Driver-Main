@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Class that handles connection and communication to meteor backend and app
+ */
 public class MeteorConnector : MonoBehaviour {
 
 	const string SERVER_IP = "ws://localhost:3000/websocket";
@@ -21,12 +24,17 @@ public class MeteorConnector : MonoBehaviour {
 		StartCoroutine (createRoom ());
 	}
 
+	/**
+	 * Send notifications to meteor server 
+	 **/
 	public IEnumerator NotifyMeteor(string notification_type) {
-		// Create a room when game starts
 		var methodCall = Meteor.Method<string>.Call ("notify", room_id, notification_type);
 		yield return (Coroutine)methodCall;
 	}
 
+	/**
+	 * Initialize observers for meteor collections
+	 **/
 	private void initializeObservers() {
 		// Room to syncronize app and desktop
 		var room_observer = rooms.Find ().Observe (
@@ -63,6 +71,9 @@ public class MeteorConnector : MonoBehaviour {
 		);
 	}
 
+	/**
+	 * Initialize meteor connection and create collections on client
+	 **/
 	private IEnumerator initialize() {
 		// connect to meteor
 		yield return Meteor.Connection.Connect (SERVER_IP);
@@ -75,6 +86,9 @@ public class MeteorConnector : MonoBehaviour {
 		initializeObservers ();
 	}
 
+	/**
+	 * Create room to syncronize app and desktop
+	 **/
 	private IEnumerator createRoom() {
 		// Create a room when game starts
 		var methodCall = Meteor.Method<string>.Call ("createRoom");
