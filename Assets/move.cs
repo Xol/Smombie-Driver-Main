@@ -2,30 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class move : MonoBehaviour {
-    private Vector3 moveForward = new Vector3(0,0,10);
+public class move : MonoBehaviour
+{
+    [SerializeField]
+    private float velocity = 1;
+
+    private Vector3 moveForward = new Vector3(0, 0, 10);
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown("z"))
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Constant Movement
+        GetComponent<CharacterController>().Move(transform.forward.normalized * Time.deltaTime * velocity);
+
+        // Boost
+        if (Input.GetKey(KeyCode.W))
         {
-            this.transform.position += Vector3.forward;
+            GetComponent<CharacterController>().Move(transform.forward.normalized * Time.deltaTime * velocity);
         }
-        if (Input.GetKeyDown("b"))
+
+        // Break
+        if (Input.GetKey(KeyCode.S))
         {
-            this.transform.position += Vector3.back;
+            GetComponent<CharacterController>().Move(transform.forward.normalized * Time.deltaTime * -1 / 2 * velocity);
         }
-        if (Input.GetKeyDown("a"))
+
+        int angle = (int)transform.rotation.eulerAngles.y;
+
+        // Rotate Left
+        if ((angle > 330 || angle <= 30) && Input.GetKey(KeyCode.A))
         {
-            this.transform.position += Vector3.left;
+            transform.RotateAround(transform.position, Vector3.up, -1);
         }
-        if (Input.GetKeyDown("l"))
+
+        // Rotate Right
+        if ((angle < 30 || angle >= 330) && Input.GetKey(KeyCode.D))
         {
-            this.transform.position += Vector3.right;
+            transform.RotateAround(transform.position, Vector3.up, 1);
         }
     }
 }
