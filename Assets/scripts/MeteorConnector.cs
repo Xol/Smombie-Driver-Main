@@ -22,9 +22,16 @@ public class MeteorConnector : MonoBehaviour {
 		// Create a collections
 		var rooms = new Meteor.Collection<RoomDocumentType> ("rooms");
 		var points = new Meteor.Collection<PointDocumentType> ("points");
+		var notifications = new Meteor.Collection<NotificationstDocumentType> ("notifications");
 
+		// Create a room when game starts
+		var methodCall = Meteor.Method<string>.Call ("createRoom");
+		yield return (Coroutine)methodCall;
+		room_id = methodCall.Response;
+		Debug.Log ("Room " + room_id + " created.");
+		GameObject.Find ("RoomKey").GetComponent<TextMesh> ().text = room_id;
 
-		// Add some handlers
+		// Room to syncronize app and desktop
 		var room_observer = rooms.Find ().Observe (
 			added: (string id, RoomDocumentType document) => {
 				//Debug.Log(string.Format("Document added: [_id={0}]", document._id));
@@ -36,7 +43,7 @@ public class MeteorConnector : MonoBehaviour {
 				}
 			}
 		);
-
+		// Points made in the app
 		var points_observer = points.Find ().Observe (
 			added: (string id, PointDocumentType document) => {
 				if (document.room_id == room_id) {
@@ -49,13 +56,14 @@ public class MeteorConnector : MonoBehaviour {
 				}
 			}
 		);
-
-		// Create a room when game starts
-		var methodCall = Meteor.Method<string>.Call ("createRoom");
-		yield return (Coroutine)methodCall;
-		room_id = methodCall.Response;
-		Debug.Log ("Room " + room_id + " created.");
-		GameObject.Find ("RoomKey").GetComponent<TextMesh> ().text = room_id;
+		// Notifications sent between app and desktop
+		var notifications_observer = notifications.Find ().Observe (
+			added: (string id, NotificationstDocumentType document) => {
+				if (document.room_id == room_id) {
+					Debug.Log("New notification: " + document.notification_type);
+				}
+			}
+		);
 	}
 
 }
@@ -68,4 +76,9 @@ public class RoomDocumentType : Meteor.MongoDocument {
 public class PointDocumentType : Meteor.MongoDocument {
 	public string room_id;
 	public int points;
+}
+
+public class NotificationstDocumentType : Meteor.MongoDocument {
+	public string room_id;
+	public string notification_type;
 }
