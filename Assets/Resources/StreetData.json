@@ -1,31 +1,31 @@
 {
 	"Prefabs": [
 	{
-		"Environment": 0,
+		"EnvironmentID": 10,
 		"SectionObjects": [
 		{
-			"Figure": 0,
+			"ID": 0,
 			"Position": { "x": 0, "y": 0, "z": 0 },
-			"Behaviour": 0
+			"MovementBehaviour": 0
 		},
 		{
-			"Figure": 1,
+			"ID": 1,
 			"Position": { "x": 1, "y": 1, "z": 1 },
-			"Behaviour": 1
+			"MovementBehaviour": 1
 		},
 		{
-			"Figure": 2,
+			"ID": 2,
 			"Position": { "x": 2, "y": 2, "z": 2 },
-			"Behaviour": 2
+			"MovementBehaviour": 2
 		}]
 	},
 	{
-		"Environment": 1,
+		"EnvironmentID": 1,
 		"SectionObjects": [
 		{
-			"Figure": 0,
+			"ID": 0,
 			"Position": { "x": 0, "y": 0, "z": 0 },
-			"Behaviour": 0
+			"MovementBehaviour": 0
 		}]
 	}]
 }
