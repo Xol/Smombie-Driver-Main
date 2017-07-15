@@ -32,7 +32,7 @@ public class CreateStreet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         oldestSection = 0;
 
-        int sectionIndex = (oldestSection + 2) % streetSections.Length;
+        int sectionIndex = (oldestSection + 3) % streetSections.Length;
         distanceThreshold = streetSections[sectionIndex].transform.position.z;
     }
 
@@ -46,9 +46,9 @@ public class CreateStreet : MonoBehaviour
         streetSections[i] = section;
 
         // Place section
-        position.z += section.GetComponent<MeshCollider>().bounds.size.z / 2;
+        position.z += section.GetComponent<MeshCollider>().bounds.size.z / 2 - 0.001f;
         section.transform.position = position;
-        position.z += section.GetComponent<MeshCollider>().bounds.size.z / 2;
+        position.z += section.GetComponent<MeshCollider>().bounds.size.z / 2 - 0.001f;
     }
 	
 	// Update is called once per frame
@@ -65,7 +65,7 @@ public class CreateStreet : MonoBehaviour
                 oldestSection = 0;
             }
 
-            int sectionIndex = (oldestSection + 2) % streetSections.Length;
+            int sectionIndex = (oldestSection + 3) % streetSections.Length;
             distanceThreshold = streetSections[sectionIndex].transform.position.z;
         }
     }

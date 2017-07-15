@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e1c939673cf88c34e8d8991554ded228
-timeCreated: 1500151190
+guid: ca7b431d7123e8c4cae404060362304c
+timeCreated: 1500153719
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: city_terrain_3
+    4300000: zebra_terrain_1
     9500000: //RootNode
   materials:
     importMaterials: 1
