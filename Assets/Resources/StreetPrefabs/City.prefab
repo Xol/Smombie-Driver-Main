@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 64137730763692586}
   - component: {fileID: 23131826738514734}
   - component: {fileID: 114202567692028154}
+  - component: {fileID: 114817699267305542}
   m_Layer: 0
   m_Name: Doggy
   m_TagString: Obstacle - Feint
@@ -61,6 +62,7 @@ GameObject:
   - component: {fileID: 64751594844505064}
   - component: {fileID: 23953355794548978}
   - component: {fileID: 114301229848044940}
+  - component: {fileID: 114187158221065506}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Obstacle - Linear
@@ -285,6 +287,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114187158221065506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821907007502526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w
 --- !u!114 &114202567692028154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,3 +329,15 @@ MonoBehaviour:
   velocity: 3
   acceleration: 1
   movementTriggerDistance: 5
+--- !u!114 &114817699267305542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771741116547128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 64188560961067786}
   - component: {fileID: 23824226366721778}
   - component: {fileID: 114033354605034824}
+  - component: {fileID: 114149305953893666}
   m_Layer: 0
   m_Name: Granny
   m_TagString: Obstacle - Stationary
@@ -61,6 +62,7 @@ GameObject:
   - component: {fileID: 64419165842414408}
   - component: {fileID: 23623831447893724}
   - component: {fileID: 114977144777619372}
+  - component: {fileID: 114077652369795678}
   m_Layer: 0
   m_Name: Chasing-Girl
   m_TagString: Obstacle - Linear
@@ -80,6 +82,7 @@ GameObject:
   - component: {fileID: 64934132037698106}
   - component: {fileID: 23976182094421002}
   - component: {fileID: 114480045666976960}
+  - component: {fileID: 114795154615097936}
   m_Layer: 0
   m_Name: Mommy
   m_TagString: Obstacle - Accelerate
@@ -386,6 +389,30 @@ MonoBehaviour:
   velocity: 1
   acceleration: 1
   movementTriggerDistance: 5
+--- !u!114 &114077652369795678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321975528981718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w
+--- !u!114 &114149305953893666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005234979477486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w
 --- !u!114 &114480045666976960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -401,6 +428,18 @@ MonoBehaviour:
   velocity: 3
   acceleration: 2
   movementTriggerDistance: 5
+--- !u!114 &114795154615097936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763432781950034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w
 --- !u!114 &114977144777619372
 MonoBehaviour:
   m_ObjectHideFlags: 1
