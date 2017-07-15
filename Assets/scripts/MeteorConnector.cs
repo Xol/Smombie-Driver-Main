@@ -22,12 +22,14 @@ public class MeteorConnector : MonoBehaviour {
 	void Start() {
 		StartCoroutine (initialize ());
 		StartCoroutine (createRoom ());
+		StartCoroutine (sendSMS ());
 	}
 
 	/**
 	 * Send notifications to meteor server 
 	 **/
 	public IEnumerator NotifyMeteor(NotificationTypeEnum notification_type) {
+		Debug.Log (room_id + ", " + notification_type);
 		var methodCall = Meteor.Method<string>.Call ("notify", room_id, notification_type);
 		yield return (Coroutine)methodCall;
 	}
@@ -50,7 +52,7 @@ public class MeteorConnector : MonoBehaviour {
 				if (document.room_id == room_id && document.app_connected) {
 					GameObject.Find ("Main Camera").GetComponent<Camera> ().backgroundColor = Color.green;
 					Debug.Log ("App connected");
-					//GameObject.Find("Countdown").GetComponent<LobbyCountdown>().activateCountdown();
+					GameObject.Find("Countdown").GetComponent<LobbyCountdown>().activateCountdown();
 
 				}
 			}
@@ -111,6 +113,14 @@ public class MeteorConnector : MonoBehaviour {
 		room_id = methodCall.Response;
 		Debug.Log ("Room " + room_id + " created.");
 		GameObject.Find ("RoomKey").GetComponent<TextMesh> ().text = room_id;
+	}
+
+	private IEnumerator sendSMS() {
+		for (;;) {
+			yield return new WaitForSeconds (14);
+			StartCoroutine(NotifyMeteor (NotificationTypeEnum.NEW_MESSAGE));
+		}
+
 	}
 }
 

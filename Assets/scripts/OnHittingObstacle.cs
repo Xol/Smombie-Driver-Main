@@ -19,6 +19,6 @@ public class OnHittingObstacle : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        GameObject.Find("__Meteor").GetComponent<MeteorConnector>().ModifyPoints(1);
+		StartCoroutine(GameObject.Find("__Meteor").GetComponent<MeteorConnector>().ModifyPoints(-10));
     }
 }
