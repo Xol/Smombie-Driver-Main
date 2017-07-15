@@ -8,15 +8,15 @@ public class MovingObstacle : MonoBehaviour
     private GameObject player;
 
     [SerializeField]
-    private float movementUpdateDistance = 15;
+    private float movementUpdateDistance = 10.0f;
     [SerializeField]
-    private float velocity = 1;
+    private float velocity = 1.0f;
 
     [Header("Accelerting and Feinting Obstacle")]
     [SerializeField]
-    private float acceleration = 1;
+    private float acceleration = 1.0f;
     [SerializeField]
-    private float movementTriggerDistance = 5;
+    private float movementTriggerDistance = 5.0f;
 
     // Use this for initialization
     void Start ()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OnHittingObstacle : MonoBehaviour
 {
+    [SerializeField]
+    private int deductedPoints = 1;
 
 	// Use this for initialization
 	void Start ()
@@ -19,6 +21,6 @@ public class OnHittingObstacle : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        GameObject.Find("__Meteor").GetComponent<MeteorConnector>().ModifyPoints(1);
+        GameObject.Find("__Meteor").GetComponent<MeteorConnector>().ModifyPoints(deductedPoints);
     }
 }

@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a02dee4cd2a442419e327d51ea568c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 1
+  velocity: 3
 --- !u!23 &1216729661
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -369,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354d08be41a931a40bbb6431c19ece06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deductedPoints: 1
 --- !u!4 &1602400350 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4035827827684618, guid: 07b54c789feed4edd9b86304391f1f05,
@@ -474,7 +475,7 @@ GameObject:
   - component: {fileID: 2050965823}
   - component: {fileID: 2050965822}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: StreetManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
