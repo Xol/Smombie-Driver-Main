@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95399798255288462}
   - component: {fileID: 64437730586307100}
   m_Layer: 0
-  m_Name: Desert
+  m_Name: Sand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

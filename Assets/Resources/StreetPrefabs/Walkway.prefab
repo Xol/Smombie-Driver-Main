@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 114271899555132544}
   m_Layer: 0
   m_Name: Music-Dude
-  m_TagString: Obstacle - Linear
+  m_TagString: Obstacle - Stationary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -615,6 +615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementUpdateDistance: 10
-  velocity: 3
+  velocity: 5
   acceleration: 1
   movementTriggerDistance: 5
