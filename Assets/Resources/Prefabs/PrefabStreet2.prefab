@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114871562896458382}
   m_Layer: 0
   m_Name: Plane (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle - Accelerate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 114243710495363480}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Obstacle - Linear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20dc7f1fb63f2e0428eba66d37e82bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backAndForward: 1
-  speed: 0.1
+  speed: 1
+  acceleration: 1
 --- !u!114 &114871562896458382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,5 +291,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20dc7f1fb63f2e0428eba66d37e82bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backAndForward: 0
   speed: 0.05
+  acceleration: 0.001

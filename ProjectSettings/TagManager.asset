@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle - Stationary
+  - Obstacle - Accelerate
+  - Obstacle - Linear
+  - Obstacle - Feint
   layers:
   - Default
   - TransparentFX
