@@ -8,6 +8,7 @@ public class Move : MonoBehaviour
     private float velocity = 1;
     private CharacterController player;
     private Vector3 moveForward = new Vector3(0, 0, 10);
+	private float gravity;
     // Use this for initialization
     void Start()
     {
@@ -17,6 +18,11 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+		gravity -= 9.81f * Time.deltaTime;
+		player.Move(new Vector3(0, gravity, 0) );
+		if ( player.isGrounded ) gravity = 0;
+
         // Constant Movement
         player.Move(transform.forward.normalized * Time.deltaTime * velocity);
         

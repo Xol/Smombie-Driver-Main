@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/smombie-driver.unity
     guid: 9a3b49a0386b01d4d91c07d0be6b3aa5
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 454d0ad89c687421b956ee0f4d9c169a

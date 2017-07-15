@@ -38,6 +38,11 @@ public class MeteorConnector : MonoBehaviour {
 		yield return (Coroutine)methodCall;
 	}
 
+	public IEnumerator ResetPoints() {
+		var methodCall = Meteor.Method<string>.Call ("resetPoints", room_id);
+		yield return (Coroutine)methodCall;
+	}
+
 	/**
 	 * Initialize observers for meteor collections
 	 **/

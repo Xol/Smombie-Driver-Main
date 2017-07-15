@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Justify : MonoBehaviour {
     // Automatically put the car the right way up, if it has come to rest upside-down.
-    [SerializeField] private float m_WaitTime = 3f;           // time to wait before self righting
+    [SerializeField] private float m_WaitTime = 1f;           // time to wait before self righting
     [SerializeField] private float m_VelocityThreshold = 1f;  // the velocity below which the car is considered stationary for self-righting
 
     private float m_LastOkTime; // the last time that the car was in an OK state
@@ -18,7 +18,7 @@ public class Justify : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         // is the car is the right way up
-        if (transform.forward.y > 0f)
+		if (transform.rotation.eulerAngles.y < 5f && transform.rotation.eulerAngles.y > -5f)
         {
             m_LastOkTime = Time.time;
         }
