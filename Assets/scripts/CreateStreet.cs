@@ -34,10 +34,6 @@ public class CreateStreet : MonoBehaviour
 
         int sectionIndex = (oldestSection + 2) % streetSections.Length;
         distanceThreshold = streetSections[sectionIndex].transform.position.z;
-
-        // Reading JSON
-        TextAsset data = Resources.Load<TextAsset>("StreetData");        
-        SectionPrefab test = JsonUtility.FromJson<SectionPrefab>(data.text);
     }
 
     void PlaceNewSection(int i)
@@ -73,17 +69,4 @@ public class CreateStreet : MonoBehaviour
             distanceThreshold = streetSections[sectionIndex].transform.position.z;
         }
     }
-}
-
-public class SectionPrefab
-{
-    public int EnvironmentID;
-    public SectionObject[] SectionObjects;
-}
-
-public class SectionObject
-{
-    public int ID;
-    public Vector3 Position;
-    public MovementBehaviourEnum MovementBehaviour;
 }
