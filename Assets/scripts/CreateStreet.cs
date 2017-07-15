@@ -9,9 +9,11 @@ public class CreateStreet : MonoBehaviour
 
     private Object[] streetPrefabs;
     private GameObject[] streetSections;
-    private Vector3 distance = new Vector3(0, 0, 10);
     private Vector3 position = new Vector3(0, 0, 0);
-    private int oldestCreatedSection = 0;
+    private float distanceThreshold;
+    private int oldestSection;
+
+    private GameObject player;
 
     private Random rnd = new Random();
 
@@ -25,16 +27,22 @@ public class CreateStreet : MonoBehaviour
         {
             PlaceNewSection(i);
         }
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        oldestSection = 0;
+
+        int sectionIndex = (oldestSection + 2) % streetSections.Length;
+        distanceThreshold = streetSections[sectionIndex].transform.position.z;
     }
 
-    void PlaceNewSection(int positionInArray)
+    void PlaceNewSection(int i)
     {
         // Create section
         int sectionIndex = Random.Range(0, streetPrefabs.Length);
 
-        //GameObject section = (GameObject)Instantiate(streetPrefabs[sectionIndex]);
-        GameObject section = (GameObject)Instantiate(streetPrefabs[2]);
-        streetSections[positionInArray] = section;
+        GameObject section = (GameObject)Instantiate(streetPrefabs[sectionIndex]);
+        //GameObject section = (GameObject)Instantiate(streetPrefabs[2]);
+        streetSections[i] = section;
 
         // Place section
         position.z += section.GetComponent<MeshCollider>().bounds.size.z / 2;
@@ -45,17 +53,19 @@ public class CreateStreet : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        // Player is behind second street section
-        if (Input.GetKeyUp(KeyCode.Return))
+        if (player.transform.position.z > distanceThreshold)
         {
-            Destroy(streetSections[oldestCreatedSection]);
-            PlaceNewSection(oldestCreatedSection);
+            Destroy(streetSections[oldestSection]);
+            PlaceNewSection(oldestSection);
 
-            oldestCreatedSection++;
-            if (oldestCreatedSection == streetSections.Length)
+            oldestSection++;
+            if (oldestSection == streetSections.Length)
             {
-                oldestCreatedSection = 0;
+                oldestSection = 0;
             }
+
+            int sectionIndex = (oldestSection + 2) % streetSections.Length;
+            distanceThreshold = streetSections[sectionIndex].transform.position.z;
         }
-	}
+    }
 }

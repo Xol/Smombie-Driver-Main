@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23939051990701466}
   - component: {fileID: 114871562896458382}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: PlaneLeft
   m_TagString: Obstacle - Accelerate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 23582254843078948}
   - component: {fileID: 114243710495363480}
   m_Layer: 0
-  m_Name: Plane
-  m_TagString: Obstacle - Linear
+  m_Name: PlaneRight
+  m_TagString: Obstacle - Accelerate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4828293597337216}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4643441255458924
 Transform:
@@ -91,7 +91,7 @@ Transform:
   m_LocalScale: {x: 0.099999994, y: 1.0000005, z: 0.10000005}
   m_Children: []
   m_Father: {fileID: 4828293597337216}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4828293597337216
 Transform:
@@ -103,8 +103,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4034374234065362}
   - {fileID: 4643441255458924}
+  - {fileID: 4034374234065362}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -278,8 +278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20dc7f1fb63f2e0428eba66d37e82bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  acceleration: 1
+  movementUpdateDistance: 15
+  velocity: 1
+  acceleration: 5
+  movementTriggerDistance: 5
 --- !u!114 &114871562896458382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,5 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20dc7f1fb63f2e0428eba66d37e82bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
-  acceleration: 0.001
+  movementUpdateDistance: 15
+  velocity: 1
+  acceleration: 5
+  movementTriggerDistance: 5

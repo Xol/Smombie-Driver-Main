@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 1216729664}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a02dee4cd2a442419e327d51ea568c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 3.14
+  velocity: 5
 --- !u!23 &1216729661
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3037a34f887ae284b877673c98fce369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfVisibleStreetsSections: 5
+  NumberOfVisibleStreetsSections: 15
 --- !u!4 &2050965823
 Transform:
   m_ObjectHideFlags: 0
