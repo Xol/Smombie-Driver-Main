@@ -53,11 +53,14 @@ public class MeteorConnector : MonoBehaviour {
 			added: (string id, PointDocumentType document) => {
 				if (document.room_id == room_id) {
 					Debug.Log ("Points: " + document.points);
+					GameObject.Find ("Points").GetComponent<TextMesh> ().text = document.points + "";
 				}
 			},
 			changed: (string id, PointDocumentType document, IDictionary changes, string[] deletions) => {
 				if (document.room_id == room_id) {
 					Debug.Log ("Points: " + document.points);
+					GameObject.Find ("Points").GetComponent<TextMesh> ().text = document.points + "";
+
 				}
 			}
 		);
