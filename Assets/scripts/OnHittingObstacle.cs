@@ -26,4 +26,9 @@ public class OnHittingObstacle : MonoBehaviour
     {
         Debug.Log("Collision2D detected");
     }
+
+    void OnTriggerEnter()
+    {
+        Debug.Log("Trigger detected");
+    }
 }
