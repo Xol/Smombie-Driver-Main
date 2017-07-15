@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 929681335}
   - component: {fileID: 929681334}
   m_Layer: 0
-  m_Name: __Lobby
+  m_Name: __Meteor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
