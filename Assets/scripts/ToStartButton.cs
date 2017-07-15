@@ -10,6 +10,9 @@ public class ToStartButton : MonoBehaviour {
 			StartCoroutine(GameObject.Find("__Meteor").GetComponent<MeteorConnector>().ResetPoints());
 			StartCoroutine(GameObject.Find("__Meteor").GetComponent<MeteorConnector> ().NotifyMeteor (NotificationTypeEnum.GAME_END));
 			SceneManager.LoadScene("Lobby");
+			Debug.Log ("Lobby");
+			StartCoroutine(GameObject.Find("__Meteor").GetComponent<MeteorConnector> ().CreateRoom ());
+
 		}
 	}
 }
