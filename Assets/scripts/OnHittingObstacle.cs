@@ -21,8 +21,8 @@ public class OnHittingObstacle : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-		StartCoroutine(GameObject.Find("__Meteor").GetComponent<MeteorConnector>().ModifyPoints(-10));
         col.GetComponent<AudioController>().PlaySound();
 		GameObject.Find ("Car").GetComponent<CarHealthController> ().damageCar ();
+        StartCoroutine(GameObject.Find("__Meteor").GetComponent<MeteorConnector>().ModifyPoints(-10));
     }
 }

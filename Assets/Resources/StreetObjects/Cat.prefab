@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 64753897462490228}
   - component: {fileID: 23745648720384130}
   - component: {fileID: 114793895473020164}
+  - component: {fileID: 114866287756698666}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Obstacle - Linear
@@ -111,3 +112,15 @@ MonoBehaviour:
   velocity: 1
   acceleration: 1
   movementTriggerDistance: 5
+--- !u!114 &114866287756698666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457606094114092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w

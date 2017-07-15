@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 64634428021547646}
   - component: {fileID: 23850415347903998}
   - component: {fileID: 114366770031078562}
+  - component: {fileID: 114960177413373222}
   m_Layer: 0
   m_Name: Chasing-Girl
   m_TagString: Obstacle - Accelerate
@@ -43,7 +44,7 @@ GameObject:
   - component: {fileID: 95216720069805282}
   - component: {fileID: 64274085485216718}
   m_Layer: 0
-  m_Name: Walkway
+  m_Name: Walkway1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,6 +62,7 @@ GameObject:
   - component: {fileID: 64966545341471916}
   - component: {fileID: 23420059391199316}
   - component: {fileID: 114854741384601788}
+  - component: {fileID: 114733484770113052}
   m_Layer: 0
   m_Name: Granny
   m_TagString: Obstacle - Linear
@@ -80,6 +82,7 @@ GameObject:
   - component: {fileID: 64518195738176804}
   - component: {fileID: 23687249947921528}
   - component: {fileID: 114929170797736220}
+  - component: {fileID: 114183530630274144}
   m_Layer: 0
   m_Name: Biker
   m_TagString: Obstacle - Linear
@@ -99,6 +102,7 @@ GameObject:
   - component: {fileID: 64741824826799980}
   - component: {fileID: 23175582173596592}
   - component: {fileID: 114577765771463896}
+  - component: {fileID: 114567400165839854}
   m_Layer: 0
   m_Name: Mommy
   m_TagString: Obstacle - Linear
@@ -118,6 +122,7 @@ GameObject:
   - component: {fileID: 64895509421581300}
   - component: {fileID: 23395251964263396}
   - component: {fileID: 114271899555132544}
+  - component: {fileID: 114454053149871896}
   m_Layer: 0
   m_Name: Music-Dude
   m_TagString: Obstacle - Stationary
@@ -543,6 +548,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114183530630274144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524143429864254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: m
 --- !u!114 &114271899555132544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -573,6 +590,30 @@ MonoBehaviour:
   velocity: 2
   acceleration: 0.5
   movementTriggerDistance: 5
+--- !u!114 &114454053149871896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807502571409904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: m
+--- !u!114 &114567400165839854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640790263139698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w
 --- !u!114 &114577765771463896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -588,6 +629,18 @@ MonoBehaviour:
   velocity: 2
   acceleration: 2
   movementTriggerDistance: 5
+--- !u!114 &114733484770113052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1496560669309648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w
 --- !u!114 &114854741384601788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -618,3 +671,15 @@ MonoBehaviour:
   velocity: 5
   acceleration: 1
   movementTriggerDistance: 5
+--- !u!114 &114960177413373222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1111532726367600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: w
