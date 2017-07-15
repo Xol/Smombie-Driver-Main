@@ -1,11 +1,8 @@
 ﻿using System;
 
-namespace AssemblyCSharp
+public enum NotificationTypeEnum
 {
-	public enum EmptyEnumeration
-	{
-		GAME_OVER = 1,
-		NEW_MESSAGE = 2,
-	}
+	GAME_OVER = 1,
+	NEW_MESSAGE = 2,
+	GAME_START = 3
 }
-

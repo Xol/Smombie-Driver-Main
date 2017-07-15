@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 791eb7250b2d0434988464739db44354
+  - enabled: 1
+    path: Assets/Scenes/smombie-driver.unity
+    guid: 9a3b49a0386b01d4d91c07d0be6b3aa5

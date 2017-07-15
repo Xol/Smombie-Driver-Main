@@ -27,7 +27,7 @@ public class MeteorConnector : MonoBehaviour {
 	/**
 	 * Send notifications to meteor server 
 	 **/
-	public IEnumerator NotifyMeteor(string notification_type) {
+	public IEnumerator NotifyMeteor(NotificationTypeEnum notification_type) {
 		var methodCall = Meteor.Method<string>.Call ("notify", room_id, notification_type);
 		yield return (Coroutine)methodCall;
 	}
@@ -45,6 +45,8 @@ public class MeteorConnector : MonoBehaviour {
 				if (document.room_id == room_id && document.app_connected) {
 					GameObject.Find ("Main Camera").GetComponent<Camera> ().backgroundColor = Color.green;
 					Debug.Log ("App connected");
+					GameObject.Find("Countdown").GetComponent<LobbyCountdown>().activateCountdown();
+
 				}
 			}
 		);
@@ -53,13 +55,11 @@ public class MeteorConnector : MonoBehaviour {
 			added: (string id, PointDocumentType document) => {
 				if (document.room_id == room_id) {
 					Debug.Log ("Points: " + document.points);
-					GameObject.Find ("Points").GetComponent<TextMesh> ().text = document.points + "";
 				}
 			},
 			changed: (string id, PointDocumentType document, IDictionary changes, string[] deletions) => {
 				if (document.room_id == room_id) {
 					Debug.Log ("Points: " + document.points);
-					GameObject.Find ("Points").GetComponent<TextMesh> ().text = document.points + "";
 
 				}
 			}
