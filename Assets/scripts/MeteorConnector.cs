@@ -48,7 +48,7 @@ public class MeteorConnector : MonoBehaviour {
 	/**
 	 * Initialize observers for meteor collections
 	 **/
-	private void initializeObservers() {
+	public void initializeObservers() {
 		// Room to syncronize app and desktop
 		var room_observer = rooms.Find ().Observe (
 			added: (string id, RoomDocumentType document) => {
@@ -88,6 +88,10 @@ public class MeteorConnector : MonoBehaviour {
 		var notifications_observer = notifications.Find ().Observe (
 			added: (string id, NotificationstDocumentType document) => {
 				if (document.room_id == room_id) {
+					if (document.notification_type == (int)NotificationTypeEnum.RIGHT_ANSWER) {
+						Debug.Log("Right Answer");
+						StartCoroutine(GameObject.Find("NotificationSuccess").GetComponent<AnimateNotificationSuccess>().ShowSuccess());
+					}
 					Debug.Log ("New notification: " + document.notification_type);
 				}
 			}
@@ -133,6 +137,6 @@ public class PointDocumentType : Meteor.MongoDocument {
 
 public class NotificationstDocumentType : Meteor.MongoDocument {
 	public string room_id;
-	public string notification_type;
+	public int notification_type;
 	public bool solved;
 }
