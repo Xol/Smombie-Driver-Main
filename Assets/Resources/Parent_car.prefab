@@ -210,7 +210,6 @@ GameObject:
   - component: {fileID: 4810505976829940}
   - component: {fileID: 23229746839686326}
   - component: {fileID: 102250520302087942}
-  - component: {fileID: 95488369292938956}
   - component: {fileID: 114217185330335580}
   m_Layer: 0
   m_Name: health_white
@@ -315,7 +314,6 @@ GameObject:
   - component: {fileID: 4673958751768136}
   - component: {fileID: 23146282931549940}
   - component: {fileID: 102285697421972712}
-  - component: {fileID: 95715263329112532}
   - component: {fileID: 114565081343610132}
   m_Layer: 0
   m_Name: health_red
@@ -388,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 1389143723808180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.08, y: 0.86, z: -0.09}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4958979148560926}
   m_RootOrder: 1
@@ -1051,40 +1049,6 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 12e03e1aab197425f9f61723f87468ac, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95488369292938956
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1699979529493204}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7079bb8432c954723888dbf246c1f284, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95715263329112532
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1952171472902210}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7079bb8432c954723888dbf246c1f284, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
