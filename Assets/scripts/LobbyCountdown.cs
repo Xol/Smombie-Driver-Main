@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LobbyCountdown : MonoBehaviour {
 
-	float timeLeft = 10.0f;
+	float timeLeft = 3.0f;
 	bool active = false;
 	public TextMesh text;
 
