@@ -18,6 +18,9 @@ public class MovingObstacle : MonoBehaviour
     [SerializeField]
     private float movementTriggerDistance = 5.0f;
 
+
+	public bool isDead = false;
+
     // Use this for initialization
     void Start ()
     {
@@ -46,12 +49,23 @@ public class MovingObstacle : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+		if (isDead) {
+			transform.Rotate (0, 0, 10);
+		}
         // Player is close enough
         if ((player.transform.position - transform.position).magnitude < movementUpdateDistance)
         {
             ms.MoveUpdate(Time.deltaTime);
         }
     }
+
+	void OnTriggerEnter(Collider col)
+	{
+		if (col.name == "Car") {
+			isDead = true;
+			GetComponent<MeshCollider> ().enabled = false;
+		}
+	}
 }
 
 
