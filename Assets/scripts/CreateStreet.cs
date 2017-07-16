@@ -11,6 +11,13 @@ public class CreateStreet : MonoBehaviour
     private Object[] streetPrefabs;
     private GameObject[] streetSections;
     private Vector3 position = new Vector3(0, 0, 0);
+
+    private Object[] emptyStreetPrefabs;
+    private GameObject[] leftSideLane;
+    private Vector3 rightPosition = new Vector3(19.5f, 0, 0);
+    private GameObject[] rightSideLane;
+    private Vector3 leftPosition = new Vector3(-19.5f, 0, 0);
+
     private float distanceThreshold;
     private int oldestSection;
 
@@ -22,7 +29,11 @@ public class CreateStreet : MonoBehaviour
 	void Start ()
     {
         streetPrefabs = Resources.LoadAll("StreetPrefabs");
+        emptyStreetPrefabs = Resources.LoadAll("EmptyStreetPrefabs");
+
         streetSections = new GameObject[NumberOfVisibleStreetsSections];
+        leftSideLane = new GameObject[NumberOfVisibleStreetsSections];
+        rightSideLane = new GameObject[NumberOfVisibleStreetsSections];
 
         for (int i = 0; i < NumberOfVisibleStreetsSections; i++)
         {
@@ -46,17 +57,42 @@ public class CreateStreet : MonoBehaviour
         streetSections[i] = section;
 
         // Place section
-        position.z += section.GetComponent<MeshCollider>().bounds.size.z / 2 - 0.001f;
+        float distance = section.GetComponent<MeshCollider>().bounds.size.z / 2 - 0.001f;
+        position.z += distance;
         section.transform.position = position;
-        position.z += section.GetComponent<MeshCollider>().bounds.size.z / 2 - 0.001f;
+        position.z += distance;
+
+
+        // Left Sidelane
+        sectionIndex = Random.Range(0, emptyStreetPrefabs.Length);
+        section = (GameObject)Instantiate(emptyStreetPrefabs[sectionIndex]);
+        leftSideLane[i] = section;
+
+        leftPosition.z += distance;
+        section.transform.position = leftPosition;
+        leftPosition.z += distance;
+
+        // Right Sidelane
+        sectionIndex = Random.Range(0, emptyStreetPrefabs.Length);
+        section = (GameObject)Instantiate(emptyStreetPrefabs[sectionIndex]);
+        rightSideLane[i] = section;
+
+        rightPosition.z += distance;
+        section.transform.position = rightPosition;
+        rightPosition.z += distance;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
         if (player.transform.position.z > distanceThreshold)
         {
+            // Mainlane
             Destroy(streetSections[oldestSection]);
+            // Sidelane
+            Destroy(leftSideLane[oldestSection]);
+            Destroy(rightSideLane[oldestSection]);
+
             PlaceNewSection(oldestSection);
 
             oldestSection++;
