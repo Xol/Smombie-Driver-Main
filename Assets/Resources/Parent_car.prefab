@@ -1106,7 +1106,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f0f1c1cd2a88e46ecba91eaa6c3522cb, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1266,7 +1266,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2cf1b47c33e404a26a185754cbc4817c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1477,7 +1477,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 8f7624c83125b4342ba8e22a7d53e413, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190335
+    rgba: 4284307604
 --- !u!102 &102516853884995984
 TextMesh:
   serializedVersion: 3
@@ -1498,7 +1498,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 8f7624c83125b4342ba8e22a7d53e413, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190335
+    rgba: 2197815296
 --- !u!111 &111340327263766624
 Animation:
   m_ObjectHideFlags: 1
