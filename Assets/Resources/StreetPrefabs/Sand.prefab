@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23403178629257980}
   - component: {fileID: 95399798255288462}
   - component: {fileID: 64437730586307100}
+  - component: {fileID: 54140893044915526}
   m_Layer: 0
   m_Name: Sand
   m_TagString: Untagged
@@ -82,6 +83,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1867499434403516}
   m_Mesh: {fileID: 4300000, guid: bc8ac0c4db0d9864680654ba2d6acc51, type: 3}
+--- !u!54 &54140893044915526
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1867499434403516}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &64437730586307100
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -92,7 +108,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bc8ac0c4db0d9864680654ba2d6acc51, type: 3}
