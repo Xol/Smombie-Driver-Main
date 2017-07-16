@@ -21,7 +21,23 @@ public class AudioController : MonoBehaviour {
         }
         if (this.gender.Equals("w"))
         {
-            audioManager.GetComponent<AudioManager>().PlayFemaleAudio();
+                audioManager.GetComponent<AudioManager>().PlayFemaleAudio();
+        }
+        if (this.gender.Equals("cat"))
+        {
+            audioManager.GetComponent<AudioManager>().PlayCatAudio();
+        }
+        if (this.gender.Equals("dog"))
+        {
+            audioManager.GetComponent<AudioManager>().PlayDogAudio();
+        }
+        if (this.gender.Equals("deer"))
+        {
+            audioManager.GetComponent<AudioManager>().PlayDeerAudio();
+        }
+        if (this.gender.Equals("squirrel"))
+        {
+            audioManager.GetComponent<AudioManager>().PlaySquirrelAudio();
         }
 
     }

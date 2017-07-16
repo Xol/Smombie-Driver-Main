@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gender: w
+  gender: deer
 --- !u!114 &114554754430765614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gender: w
+  gender: deer
 --- !u!114 &114758556613700054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57079b0c2e4129e4c9333721cc436a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gender: w
+  gender: deer
 --- !u!114 &114814704829757238
 MonoBehaviour:
   m_ObjectHideFlags: 1
