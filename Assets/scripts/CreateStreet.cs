@@ -12,6 +12,7 @@ public class CreateStreet : MonoBehaviour
     private GameObject[] streetSections;
     private Vector3 position = new Vector3(0, 0, 0);
 
+    private Object[] emptyStreetPrefabs;
     private GameObject[] leftSideLane;
     private Vector3 rightPosition = new Vector3(19.5f, 0, 0);
     private GameObject[] rightSideLane;
@@ -28,6 +29,7 @@ public class CreateStreet : MonoBehaviour
 	void Start ()
     {
         streetPrefabs = Resources.LoadAll("StreetPrefabs");
+        emptyStreetPrefabs = Resources.LoadAll("EmptyStreetPrefabs");
 
         streetSections = new GameObject[NumberOfVisibleStreetsSections];
         leftSideLane = new GameObject[NumberOfVisibleStreetsSections];
@@ -62,17 +64,17 @@ public class CreateStreet : MonoBehaviour
 
 
         // Left Sidelane
-        sectionIndex = Random.Range(0, streetPrefabs.Length);
-        section = (GameObject)Instantiate(streetPrefabs[sectionIndex]);
+        sectionIndex = Random.Range(0, emptyStreetPrefabs.Length);
+        section = (GameObject)Instantiate(emptyStreetPrefabs[sectionIndex]);
         leftSideLane[i] = section;
 
         leftPosition.z += distance;
         section.transform.position = leftPosition;
         leftPosition.z += distance;
 
-        // Left Sidelane
-        sectionIndex = Random.Range(0, streetPrefabs.Length);
-        section = (GameObject)Instantiate(streetPrefabs[sectionIndex]);
+        // Right Sidelane
+        sectionIndex = Random.Range(0, emptyStreetPrefabs.Length);
+        section = (GameObject)Instantiate(emptyStreetPrefabs[sectionIndex]);
         rightSideLane[i] = section;
 
         rightPosition.z += distance;
