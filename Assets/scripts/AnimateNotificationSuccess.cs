@@ -16,7 +16,8 @@ public class AnimateNotificationSuccess : MonoBehaviour {
 
 	public IEnumerator ShowSuccess() {
 		transform.localScale = new Vector3 (0.3f, 0.3f, 1);
-		yield return new WaitForSeconds(4);
+		transform.GetComponent<Animator> ().SetTrigger ("Success");
+		yield return new WaitForSeconds(1.8f);
 		transform.localScale = Vector3.zero;
 	}
 }
