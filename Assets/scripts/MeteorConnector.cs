@@ -92,6 +92,10 @@ public class MeteorConnector : MonoBehaviour {
 						Debug.Log("Right Answer");
 						StartCoroutine(GameObject.Find("NotificationSuccess").GetComponent<AnimateNotificationSuccess>().ShowSuccess());
 					}
+					if (document.notification_type == (int)NotificationTypeEnum.WRONG_ANSWER) {
+						Debug.Log("Wrong Answer");
+						StartCoroutine(GameObject.Find("NotificationFail").GetComponent<AnimateNotificationFail>().ShowSuccess());
+					}
 					Debug.Log ("New notification: " + document.notification_type);
 				}
 			}
