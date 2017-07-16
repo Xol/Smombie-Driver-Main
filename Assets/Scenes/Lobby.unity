@@ -294,7 +294,7 @@ TextMesh:
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 200
+  m_FontSize: 190
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 8f7624c83125b4342ba8e22a7d53e413, type: 3}
